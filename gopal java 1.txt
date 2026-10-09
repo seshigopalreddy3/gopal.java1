@@ -1,0 +1,48 @@
+public class MainMethod1 {
+
+    public static void main(String[] args) {
+
+        Thread t1 = new Thread(() -> {
+            while (true) {
+                System.out.println("Good Morning");
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            while (true) {
+                System.out.println("Hello");
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        });
+
+        Thread t3 = new Thread(() -> {
+            while (true) {
+                System.out.println("Welcome");
+
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    break;
+                }
+            }
+        });
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
